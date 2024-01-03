@@ -14,7 +14,7 @@ class Player {
 List<Player> players = [];
 Future<void> getPlayers() async {
   try{
-    final URL = Uri.https("finalmobileproject.000webhostapp.com","getfottball.php");
+    final URL = Uri.https("finalmobileproject.000webhostapp.com","getbasketball.php");
     final response = await http.get(URL);
     players.clear();
     if(response.statusCode == 200){
@@ -23,7 +23,7 @@ Future<void> getPlayers() async {
         Player p = Player(
         row['name'],
         int.parse row['age']),
-
+        int.parse(row['cid']),
         );
         players.add(p);
       }
