@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AddCategory extends StatefulWidget {
-  const AddCategory({super.key});
+class AddPLayer extends StatefulWidget {
+  const AddPLayer({super.key});
 
   @override
-  State<AddCategory> createState() => _AddCategoryState();
+  State<AddPLayer> createState() => _AddPLayerState();
 }
 
-class _AddCategoryState extends State<AddCategory> {
+class _AddPLayerState extends State<AddPLayer> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
   }
 }
+
