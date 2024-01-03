@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ViewFootball.dart';
 import 'ViewBasketball.dart';
+import 'package:finalmobileproj/AddCategory.dart';
 
 class Buttons extends StatefulWidget {
   const Buttons({super.key});
@@ -20,9 +21,9 @@ class _ButtonsState extends State<Buttons> {
       body: Center(child: Column(
         children: [
         const SizedBox(height: 20,),
-        ElevatedButton(onPressed: onPressed(){
+        ElevatedButton(onPressed: (){
           Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const FPlayer()),);
+          MaterialPageRoute(builder: (context) => const ShowCustomersF()),);
 
         },
           child: const Icon(Icons.sports_soccer, size: 50),
@@ -31,9 +32,9 @@ class _ButtonsState extends State<Buttons> {
         ),
         const SizedBox(height: 20,)
         ,
-          ElevatedButton(onPressed: onPressed(){
+          ElevatedButton(onPressed:(){
           Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const BPlayer()),);
+          MaterialPageRoute(builder: (context) => const ShowCustomersB()),);
 
           },
             child: const Icon(Icons.sports_basketball, size: 50),
@@ -42,9 +43,9 @@ class _ButtonsState extends State<Buttons> {
           ),
         const SizedBox(height: 20,),
 
-          ElevatedButton(onPressed: onPressed(){
+          ElevatedButton(onPressed:(){
           Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const Page2()),);
+          MaterialPageRoute(builder: (context) => const AddPLayer()),);
 
           },
             child: const Text('Add player'),

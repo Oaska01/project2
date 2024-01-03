@@ -6,14 +6,14 @@ final List<String> _customers = [];
 // domain of your server
 const String _baseURL = 'finalmobileproject.000webhostapp.com';
 
-class ShowCustomers extends StatefulWidget {
-  const ShowCustomers({super.key});
+class ShowCustomersF extends StatefulWidget {
+  const ShowCustomersF({super.key});
 
   @override
-  State<ShowCustomers> createState() => _ShowCustomersState();
+  State<ShowCustomersF> createState() => _ShowCustomersState();
 }
 
-class _ShowCustomersState extends State<ShowCustomers> {
+class _ShowCustomersState extends State<ShowCustomersF> {
   bool _load = false;
 
   void update(bool success) {

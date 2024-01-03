@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   void update(bool success) {
     if (success) { // open the Add Category page if successful
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const AddCategory()));
+          .push(MaterialPageRoute(builder: (context) => const AddPLayer()));
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('failed to set key')));
@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
       if (myKey.isNotEmpty) {
         Navigator.of(context)
             .push(MaterialPageRoute(
-            builder: (context) => const AddCategory()));
+            builder: (context) => const AddPLayer()));
       }
     });
   }
@@ -92,3 +92,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'ViewFootball.dart';
+import 'buttons.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -10,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Home(),
+    return const MaterialApp(
+      home: Buttons(),
     );
   }
 }
