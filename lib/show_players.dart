@@ -74,7 +74,7 @@ void updateCustomers(Function(bool success) update) async {
     if (response.statusCode == 200) {
       final jsonResponse = convert.jsonDecode(response.body);
       for (var row in jsonResponse) {
-        _customers.add('pid: ${row['pid']} name: ${row['name']} category: ${row['category']} ');
+        _customers.add('pid: ${row['pid']} name: ${row['name']} age: ${['age']} category: ${row['category']} ');
       }
       update(true);
     }
