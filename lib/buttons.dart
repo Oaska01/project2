@@ -41,27 +41,22 @@ class _ButtonsState extends State<Buttons> {
 
 
           ),
-        const SizedBox(height: 20,),
+        const SizedBox(height: 10),
+        ElevatedButton(onPressed: (){
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const ShowPlayers()),);
 
+        },
+          child: const Icon(Icons.person_search, size: 50,),
+        ),
+          const SizedBox(height: 20,),
           ElevatedButton(onPressed:(){
           Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const AddPLayer()),);
 
           },
             child: const Text('Add player'),
-
-
           ),
-
-          const SizedBox(height: 10),
-        ElevatedButton(onPressed: (){
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const ShowPlayers()),);
-
-        },
-          child: const Text('Show players'),
-        )
-
         ],
 
 

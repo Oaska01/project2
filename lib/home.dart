@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:encrypted_shared_preferences/encrypted_shared_preferences.dart';
 import 'AddCategory.dart';
+import 'buttons.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   void update(bool success) {
     if (success) { // open the Add Category page if successful
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const AddPLayer()));
+          .push(MaterialPageRoute(builder: (context) => const Buttons()));
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('failed to set key')));
@@ -51,7 +52,7 @@ class _HomeState extends State<Home> {
       if (myKey.isNotEmpty) {
         Navigator.of(context)
             .push(MaterialPageRoute(
-            builder: (context) => const AddPLayer()));
+            builder: (context) => const Buttons()));
       }
     });
   }
