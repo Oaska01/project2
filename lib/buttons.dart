@@ -1,7 +1,9 @@
+import 'package:finalmobileproj/show_players.dart';
 import 'package:flutter/material.dart';
 import 'ViewFootball.dart';
 import 'ViewBasketball.dart';
 import 'package:finalmobileproj/AddCategory.dart';
+
 
 class Buttons extends StatefulWidget {
   const Buttons({super.key});
@@ -27,8 +29,6 @@ class _ButtonsState extends State<Buttons> {
 
         },
           child: const Icon(Icons.sports_soccer, size: 50),
-
-
         ),
         const SizedBox(height: 20,)
         ,
@@ -52,6 +52,16 @@ class _ButtonsState extends State<Buttons> {
 
 
           ),
+
+          const SizedBox(height: 10),
+        ElevatedButton(onPressed: (){
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const ShowPlayers()),);
+
+        },
+          child: const Text('Show players'),
+        )
+
         ],
 
 
