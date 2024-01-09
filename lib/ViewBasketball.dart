@@ -73,7 +73,7 @@ void updateCustomers(Function(bool success) update) async {
     if (response.statusCode == 200) { // if successful call
       final jsonResponse = convert.jsonDecode(response.body); // create dart json object from json array
       for (var row in jsonResponse) { // iterate over all rows in the json array
-        _customers.add('pid: ${row['pid']} name: ${row['name']} age: ${row['age']} cid: ${row['cid']}');
+        _customers.add('pid: ${row['pid']} name: ${row['name']} age: ${row['age']}}');
       }
       update(true); // callback update method to inform that we completed retrieving data
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import 'buttons.dart';
 
 import 'home.dart';
 
@@ -18,18 +19,18 @@ class _AddCustomerState extends State<AddPLayer> {
   // creates a unique key to be used by the form
   // this key is necessary for validation
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _controllerID = TextEditingController();
   TextEditingController _controllerName = TextEditingController();
-  TextEditingController _controllerBalance = TextEditingController();
+  TextEditingController _controllerAge = TextEditingController();
+  TextEditingController _controllerCid = TextEditingController();
   // the below variable is used to display the progress bar when retrieving data
   bool _loading = false;
 
 
   @override
   void dispose() {
-    _controllerID.dispose();
     _controllerName.dispose();
-    _controllerBalance.dispose();
+    _controllerAge.dispose();
+    _controllerCid.dispose();
     super.dispose();
   }
 
@@ -54,20 +55,6 @@ class _AddCustomerState extends State<AddPLayer> {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 10),
-              SizedBox(width: 200, child: TextFormField(controller: _controllerID,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter ID',
-                ),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter id';
-                  }
-                  return null;
-                },
-              )),
-              const SizedBox(height: 10),
               SizedBox(width: 200, child: TextFormField(controller: _controllerName,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -75,21 +62,35 @@ class _AddCustomerState extends State<AddPLayer> {
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter name';
+                    return 'Please Enter Name';
                   }
                   return null;
                 },
               )),
               const SizedBox(height: 10),
-              SizedBox(width: 200, child: TextFormField(controller: _controllerBalance,
+              SizedBox(width: 200, child: TextFormField(controller: _controllerAge,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter Balance',
+                  hintText: 'Enter Age',
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter balance';
+                    return 'Please Enter Age';
+                  }
+                  return null;
+                },
+              )),
+              const SizedBox(height: 10),
+              SizedBox(width: 200, child: TextFormField(controller: _controllerCid,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter Cid',
+                ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter Cid';
                   }
                   return null;
                 },
@@ -103,8 +104,8 @@ class _AddCustomerState extends State<AddPLayer> {
                     setState(() {
                       _loading = true;
                     });
-                    saveCustomer(update, int.parse(_controllerID.text), _controllerName.text,
-                        double.parse(_controllerBalance.text));
+                    saveCustomer(update, _controllerName.text, int.parse(_controllerAge.text),
+                        int.parse(_controllerCid.text));
                   }
                 },
                 child: const Text('Submit'),
@@ -112,10 +113,13 @@ class _AddCustomerState extends State<AddPLayer> {
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Buttons()));
                 },
                 child: const Text('Home'),
               ),
+              const SizedBox(height: 10),
+              const Text("Cid 1 = Basketball"),
+              const Text("Cid 2 = Football"),
               const SizedBox(height: 10),
               Visibility(visible: _loading, child: const CircularProgressIndicator())
             ],
@@ -124,7 +128,7 @@ class _AddCustomerState extends State<AddPLayer> {
   }
 }
 
-void saveCustomer(Function(String text) update, int cid, String name, double balance) async {
+void saveCustomer(Function(String text) update, String Name, int Age, int Cid) async {
   try {
     // we need to first retrieve and decrypt the key
     // send a JSON object using http post
@@ -134,7 +138,7 @@ void saveCustomer(Function(String text) update, int cid, String name, double bal
           'Content-Type': 'application/json; charset=UTF-8',
         }, // convert the cid, name and key to a JSON object
         body: convert.jsonEncode(<String, String>{
-          'cid': '$cid', 'name': name, 'balance':'$balance', 'key': 'your_key'
+          'name': '$Name', 'Age': '$Age', 'Cid':'$Cid', 'key': 'your_key'
         })).timeout(const Duration(seconds: 5));
     if (response.statusCode == 200) {
       // if successful, call the update function
